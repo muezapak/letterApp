@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private char[] rootLetters = {'a', 'c', 'e', 'i', 'm', 'n', 'o', 'r', 's', 'u', 'v', 'w', 'x', 'z'};
     private String answerString = "";
     static int count=0;
+    String ltr;
 
 
     private FragmentManager fragmentManager;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         letterTextView = findViewById(R.id.letter_text_view);
+        ltr=letterTextView.getText().toString();
         letterTextView.setText(getRandomLetter());
 
 
@@ -91,10 +93,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayAnswer(String answer,String ButtonType) {
-        String blankString="";
+        DBHandler databaseHelper = new DBHandler(MainActivity.this);
+
+        // Save the answer in the database
+
         bundle.putString("Answer", answer);
         bundle.putString("ButtonType", ButtonType);
-        bundle.putString("empty", blankString);
+        databaseHelper.insertAnswer( answer,ButtonType,  ltr);
 
         MyFirstFragment myFirstFragment = new MyFirstFragment();
 
