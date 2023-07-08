@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -19,46 +20,40 @@ public class MainActivity extends AppCompatActivity {
     private char[] grassLetters = {'g', 'j', 'p', 'q', 'y'};
     private char[] rootLetters = {'a', 'c', 'e', 'i', 'm', 'n', 'o', 'r', 's', 'u', 'v', 'w', 'x', 'z'};
     private String answerString = "";
-    private String ans = "";
+    static int count=0;
 
-    private MyFirstFragment myFirstFragment;
+
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
+    String ans="";
+    String ButtonType="";
+    Bundle bundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myFirstFragment = new MyFirstFragment();
+
+        MyFirstFragment myFirstFragment = new MyFirstFragment();
         fragmentManager = getSupportFragmentManager();
 
         letterTextView = findViewById(R.id.letter_text_view);
         letterTextView.setText(getRandomLetter());
 
 
-
         Button skyButton = findViewById(R.id.sky_button);
         skyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                ans = answerString;
-                bundle.putString("Answer", ans);
-                myFirstFragment.setArguments(bundle);
-
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame, myFirstFragment);
-                fragmentTransaction.commit();
-
-                // Wait for 5 seconds and create a new question
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        letterTextView.setText(getRandomLetter());
-
-                    }
-                }, 5000); // 5000 milliseconds = 5 seconds
+                if (count < 5) {
+                    count++;
+                    ButtonType = "Sky Letter";
+                    ans = answerString;
+                    displayAnswer(ans, ButtonType);
+                } else {
+                    Toast.makeText(MainActivity.this, "Check Your result", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -66,23 +61,14 @@ public class MainActivity extends AppCompatActivity {
         grassButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                ans = answerString;
-                bundle.putString("Answer", ans);
-                myFirstFragment.setArguments(bundle);
-
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame, myFirstFragment);
-                fragmentTransaction.commit();
-
-                // Wait for 5 seconds and create a new question
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        letterTextView.setText(getRandomLetter());
-
-                    }
-                }, 5000); // 5000 milliseconds = 5 seconds
+                if (count < 5) {
+                    count++;
+                    ButtonType = "Grass Letter";
+                    ans = answerString;
+                    displayAnswer(ans, ButtonType);
+                } else {
+                    Toast.makeText(MainActivity.this, "Check Your result", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -90,25 +76,46 @@ public class MainActivity extends AppCompatActivity {
         rootButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                ans = answerString;
-                bundle.putString("Answer", ans);
-                myFirstFragment.setArguments(bundle);
-
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame, myFirstFragment);
-                fragmentTransaction.commit();
-
-                // Wait for 5 seconds and create a new question
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        letterTextView.setText(getRandomLetter());
-
-                    }
-                }, 5000); // 5000 milliseconds = 5 seconds
+                if (count < 5) {
+                    count++;
+                    ButtonType = "Root Letter";
+                    ans = answerString;
+                    displayAnswer(ans, ButtonType);
+                } else {
+                    Toast.makeText(MainActivity.this, "Check Your result", Toast.LENGTH_LONG).show();
+                }
             }
         });
+
+
+    }
+
+    private void displayAnswer(String answer,String ButtonType) {
+        String blankString="";
+        bundle.putString("Answer", answer);
+        bundle.putString("ButtonType", ButtonType);
+        bundle.putString("empty", blankString);
+
+        MyFirstFragment myFirstFragment = new MyFirstFragment();
+
+        myFirstFragment.setArguments(bundle);
+
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame, myFirstFragment);
+        fragmentTransaction.commit();
+
+        // Wait for 5 seconds and create a new question
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                letterTextView.setText(getRandomLetter());
+
+
+
+
+            }
+        }, 3000); // 5000 milliseconds = 5 seconds
     }
 
     private String getRandomLetter() {
