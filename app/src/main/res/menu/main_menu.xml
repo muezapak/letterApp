@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/playAgain"
+            android:icon="@drawable/baseline_games_24"
+            android:title="Play Game Again" />
+        <item
+            android:id="@+id/showData"
+            android:icon="@drawable/baseline_send_24"
+            android:title="See Recods" />
+
+    </group>
+
+
+
+
+
+
+
+
+</menu>

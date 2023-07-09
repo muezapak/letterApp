@@ -9,8 +9,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.App"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".NewActivity"
+            android:exported="false" />
         <activity
             android:name=".LayoutDesigns"
             android:exported="false" />
