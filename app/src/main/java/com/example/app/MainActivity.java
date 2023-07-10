@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private char[] grassLetters = {'g', 'j', 'p', 'q', 'y'};
     private char[] rootLetters = {'a', 'c', 'e', 'i', 'm', 'n', 'o', 'r', 's', 'u', 'v', 'w', 'x', 'z'};
     private String answerString = "";
-    static int count = 0;
+     int count = 0;
     String ltr;
 
     private FragmentManager fragmentManager;
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.playAgain:
                                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
                                 startActivity(intent);
-                                //drawerLayout.closeDrawer(GravityCompat.START);
+
                                 break;
 
 
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
                     letterTextView.setText(getRandomLetter());
                 }
-            }, 3000); // 5000 milliseconds = 5 seconds
+            }, 2000);
         } catch (Exception e) {
             Toast.makeText(MainActivity.this, "Display Answer wala"+e.getMessage().toString(), Toast.LENGTH_LONG).show();
 

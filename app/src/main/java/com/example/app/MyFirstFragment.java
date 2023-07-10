@@ -30,7 +30,7 @@ public class MyFirstFragment extends Fragment {
         if (bundle != null) {
             answer = bundle.getString("Answer");
             ButtonType = bundle.getString("ButtonType");
-            blankString=bundle.getString("empty");
+
 
             if (answer != null) {
                 if (answer.equals(ButtonType)) {
@@ -45,7 +45,7 @@ public class MyFirstFragment extends Fragment {
                 public void run() {
                     result.setText("");
                 }
-            }, 3000);
+            }, 2000);
 
   }
 

@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center|center_horizontal"
-        android:text="My First Fragment"
-        android:textSize="20sp"
+        android:text="Result"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
@@ -23,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:textSize="16sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 
 </LinearLayout>
