@@ -15,21 +15,31 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/ltrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Id"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
+
+
+        <TextView
             android:id="@+id/UserAnswers"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="User Answers"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/CorrectAnswers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="20sp"
 
             android:text="Correct Answers"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
              />
 
         <TextView
@@ -37,17 +47,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Alphabets"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/Scores"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Scores"
-            android:textColor="@color/black"
-            android:textSize="25sp"
- />
 
     </LinearLayout>
 

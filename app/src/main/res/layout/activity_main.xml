@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    <!-- Main Content -->
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="#07051B"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:title="Letter App"
+        app:titleTextColor="@color/cardview_light_background" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/purple_500"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-
-            app:title="Letter App"
-            app:titleTextColor="@color/cardview_light_background"/>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="717dp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -32,8 +27,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:background="#0F0820"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/letter_text_view"
@@ -42,46 +38,57 @@
                     android:layout_marginTop="24dp"
                     android:gravity="center"
                     android:text="Hello World!"
-                    android:textSize="70sp" />
+                    android:textColor="#ffff"
+                    android:textSize="50sp" />
 
-                <Button
-                    android:id="@+id/sky_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:text="Sky Letter" />
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="250dp"
+                   android:gravity="center">
+                   <Button
+                       android:id="@+id/sky_button"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="32dp"
+                       android:backgroundTint="#212BEA"
+                       android:text="Sky Letter" />
 
-                <Button
-                    android:id="@+id/root_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:text="Root Letter" />
+                   <Button
+                       android:id="@+id/root_button"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="32dp"
+                       android:backgroundTint="#531717"
+                       android:text="Root Letter" />
 
-                <Button
-                    android:id="@+id/grass_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:text="Grass Letter" />
+                   <Button
+                       android:id="@+id/grass_button"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="32dp"
+                       android:backgroundTint="#287A05"
+                       android:text="Grass Letter" />
+               </LinearLayout>
 
                 <FrameLayout
                     android:id="@+id/frame"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp" />
+                    android:layout_height="350dp"
+                    android:layout_marginTop="50dp" />
+                
+                
+
 
             </LinearLayout>
         </ScrollView>
-    </LinearLayout>
 
-    <!-- Navigation Drawer -->
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu" />
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header"
+            app:menu="@menu/main_menu" />
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

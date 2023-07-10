@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            Toast.makeText(MainActivity.this,"Something",Toast.LENGTH_LONG).show();
+                finish();
         }
     }
 
@@ -52,12 +53,14 @@ public class MainActivity extends AppCompatActivity {
     String ButtonType = "";
     Bundle bundle = new Bundle();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
+
+
             toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
@@ -69,27 +72,41 @@ public class MainActivity extends AppCompatActivity {
             toggle.syncState();
 
 
-            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        try {
+                navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    switch (menuItem.getItemId()) {
-                        case R.id.playAgain:
-                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            //drawerLayout.closeDrawer(GravityCompat.START);
-                            break;
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                   /* case R.id.showData :
-                        Toast.makeText(getApplicationContext(),"Retur is Clicked",Toast.LENGTH_LONG).show();
-                        //drawerLayout.closeDrawer(GravityCompat.START);
-                        break;*/
+                        switch (menuItem.getItemId()) {
+                            case R.id.playAgain:
+                                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                //drawerLayout.closeDrawer(GravityCompat.START);
+                                break;
 
+
+                            case R.id.showData :
+
+                                Intent intent1 = new Intent(MainActivity.this, newActivity.class);
+                                startActivity(intent1);
+                                break;
+
+
+
+                        }
+
+                        return true;
                     }
+                });
 
-                    return true;
-                }
-            });
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, "Buttons wala"+e.getMessage().toString(), Toast.LENGTH_LONG).show();
+            System.out.println(e.getMessage().toString());
+
+        }
+
+
 
 
             MyFirstFragment myFirstFragment = new MyFirstFragment();
@@ -142,11 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-        } catch (Exception e) {
-            Toast.makeText(MainActivity.this, "Buttons wala"+e.getMessage().toString(), Toast.LENGTH_LONG).show();
-            System.out.println(e.getMessage().toString());
 
-        }
     }
 
     private void displayAnswer(String answer, String ButtonType) {

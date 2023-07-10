@@ -12,16 +12,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".NewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LayoutDesigns"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivityA"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivityM"
+            android:name=".newActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

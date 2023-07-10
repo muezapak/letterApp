@@ -2,7 +2,22 @@ package com.example.app;
 
 public class Model {
 
-    String cAnswers,uAnswers,Alpha;
+    String cAnswers,uAnswers,Alpha,id;
+
+    public Model(String cAnswers, String uAnswers, String alpha, String id) {
+        this.cAnswers = cAnswers;
+        this.uAnswers = uAnswers;
+        Alpha = alpha;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Model(String cAnswers, String uAnswers, String alpha) {
         this.cAnswers = cAnswers;
